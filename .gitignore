@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.pyc
+
+# Browser Files
+browser_files/*
+
+# CSV
+*.csv
+
+*:Zone.Identifier
