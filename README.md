@@ -15,9 +15,7 @@ Based on your selection, the script queries the corresponding Firefox databases 
 
 ## Screenshots
 **Menu:**
-<p float="left">
-    <img src="imgs/1.PNG" width="290" />
-    <img src="imgs/2.PNG" width="290" />
-</p>
-
+![Example output for Cookies](imgs/1.PNG)
+![Example output for Cookies](imgs/2.PNG)
+**CSV Example Output**
 ![Example output for Cookies](imgs/cookies.PNG)
