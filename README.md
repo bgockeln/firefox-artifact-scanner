@@ -15,7 +15,11 @@ Based on your selection, the script queries the corresponding Firefox databases 
 
 ## Screenshots
 **Menu:**
+
 ![Example output for Cookies](imgs/1.PNG)
+
 ![Example output for Cookies](imgs/2.PNG)
+
 **CSV Example Output**
+
 ![Example output for Cookies](imgs/cookies.PNG)
