@@ -4,14 +4,14 @@ import csv
 import os 
 import sys 
 
-# clear screen helper function
+# Helper Functions
 def clear_screen():
     os.system("cls" if os.name=="nt" else "clear")
 
-# wait for input helper function
 def wait():
     input("Press any key")
 
+# Main Function
 def analyze_cookies(db_path):
     
     # Check if file exists
@@ -21,55 +21,57 @@ def analyze_cookies(db_path):
 
     print("File found. Proceeding...")
 
-    # Connect to SQLite DB and create a cursor to execute queries.
+    # Connect to SQLite DB and create a cursor to execute queries
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
-    # SQL query to retrieve URLS, title, visit counts and last visit dates.
+    # SQL query to retrieve cookie attributes
     query = """
     SELECT host, name, value, expiry, lastAccessed, creationTime, isSecure, isHttpOnly, sameSite
     FROM moz_cookies
     ORDER BY lastAccessed DESC
     """
 
-    # Execute the SQL query.
+    # Execute the SQL query
     cursor.execute(query)
 
-    # Creates the CSV file and writes the results into it.
+    # Create the CSV file and writes the results into it
     with open("cookies_export.csv", "w", newline="", encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(["Host", "Name", "Value", "Expiry", "Last Accessed", "Creation Time", "Is Secure", "Is Http Only", "Same Site"])
 
-        # Loop through all results returned by the query.
+        # Loop through all results returned by the query
         for row in cursor.fetchall():
             host = row[0]
             name = row[1]
             value = row[2]
             expiry = row[3]
             lastAccessed = row[4]
-            creationTimeFormatted = row [5]
-            isSecure = row [6]
-            isHttpOnly = row [7]
-            sameSite = row [8]
+            creationTimeFormatted = row[5]
+            isSecure = row[6]
+            isHttpOnly = row[7]
+            sameSite = row[8]
   
-            # Convert Firefox timestamp to a datetime object.
+            # Convert Firefox timestamp to a datetime object
+            # If there is no lastAccessed value, use "N/A"
             if lastAccessed:
                 lastAccessedTime = datetime(1970, 1, 1) + timedelta(microseconds=lastAccessed)
             else:
                 lastAccessedTime = "N/A"
             
+            # If there is no creationTime value, use "N/A"
             creationTime = row[5]
             if creationTime: 
                 creationTimeFormatted = datetime(1970, 1, 1) + timedelta(microseconds=creationTime)
             else:
                 creationTimeFormatted = "N/A"
     
-            # Write each row of actual browsing data to the CSV file.
+            # Write each row of actual browsing data to the CSV file
             writer.writerow([host, name, value, expiry, lastAccessedTime, creationTimeFormatted, isSecure, isHttpOnly, sameSite])
 
     print("Analysis Complete")
     wait()
     clear_screen()
 
-    # Close DB conection.
+    # Close DB connection
     conn.close()

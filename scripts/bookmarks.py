@@ -4,14 +4,14 @@ import csv
 import os 
 import sys 
 
-# clear screen helper function
+# Helper Functions
 def clear_screen():
     os.system("cls" if os.name=="nt" else "clear")
 
-# wait for input helper function
 def wait():
     input("Press any key")
 
+# Main Function
 def analyze_bookmarks(db_path):
     
     # Check if file exists
@@ -21,11 +21,11 @@ def analyze_bookmarks(db_path):
 
     print("File found. Proceeding...")
 
-    # Connect to SQLite DB and create a cursor to execute queries.
+    # Connect to SQLite DB and create a cursor to execute queries
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
-    # SQL query to retrieve URLS, title, visit counts and last visit dates.
+    # SQL query to retrieve URLS, title, visit counts and last visit dates
     query = """
     SELECT moz_bookmarks.title, moz_places.url, moz_places.visit_count, moz_places.last_visit_date
     FROM moz_bookmarks
@@ -34,33 +34,34 @@ def analyze_bookmarks(db_path):
     ORDER BY moz_places.visit_count DESC
     """
 
-    # Execute the SQL query.
+    # Execute the SQL query
     cursor.execute(query)
 
-    # Creates the CSV file and writes the results into it.
+    # Create the CSV file and writes the results into it
     with open("bookmarks_export.csv", "w", newline="", encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(["Timestamp", "Visit Count", "Title", "URL"])
 
-        # Loop through all results returned by the query.
+        # Loop through all results returned by the query
         for row in cursor.fetchall():
             title = row[0]
             url = row[1]
             count = row[2]
             timestamp = row[3]
   
-            # Convert Firefox timestamp to a datetime object.
+            # Convert Firefox timestamp to a datetime object
+            # If there is no last visit date, use "N/A"
             if timestamp: 
                 ts = datetime(1970, 1, 1) + timedelta(microseconds=timestamp)
             else:
                 ts = "N/A"
     
-            # Write each row of actual browsing data to the CSV file.
+            # Write each row of actual browsing data to the CSV file
             writer.writerow([ts, count, title, url])
 
     print("Analysis Complete")
     wait()
     clear_screen()
 
-    # Close DB conection.
+    # Close DB connection
     conn.close()

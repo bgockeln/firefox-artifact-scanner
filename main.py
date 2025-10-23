@@ -2,11 +2,10 @@ import sys
 import os
 from scripts import bookmarks, cookies, formhistory, history
 
-# ---------------- Helper Functions ----------------
+# Helper Functions
 def clear_screen():
     os.system("cls" if os.name=="nt" else "clear")
 
-# wait for input helper function
 def wait():
     input("Press any key")
 
@@ -14,10 +13,10 @@ def exit_script():
     print("Exiting...")
     sys.exit(0)
 
-# Hardcoded path to the browser files
+# Default folder containing Firefox browser files
 firefox_folder = os.path.join(os.path.dirname(__file__), "browser_files")
 
-# ---------------- Analysis Functions ----------------
+# Analysis Functions 
 def analyze_bookmarks():
     print("\nRunning bookmark analysis")
     file_path = os.path.join(firefox_folder, "places.sqlite") 
@@ -57,11 +56,11 @@ def analyze_history():
     if os.path.exists(file_path): 
         history.analyze_history(file_path)
     else: 
-        print("No supported files found")
+        print("places.sqlite file not found")
         wait()
         clear_screen()
 
-# ---------------- Main Loop ----------------
+# Main Loop 
 def main():
     clear_screen()
 
@@ -92,4 +91,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
