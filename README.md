@@ -19,5 +19,5 @@ Based on your selection, the script queries the corresponding Firefox databases 
     <img src="imgs/1.PNG" width="290" />
     <img src="imgs/2.PNG" width="290" />
 </p>
-Example output for Cookies
+
 ![Example output for Cookies](imgs/cookies.PNG)
