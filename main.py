@@ -73,7 +73,7 @@ def main():
     }
 
     while True:
-        print("\nBen's Browser Artifact Analyzer")
+        print("\nBen's Firefox Artifact Analyzer")
         print("1. Analyze Bookmarks")
         print("2. Analyze Cookies")
         print("3. Analyze Form History")
