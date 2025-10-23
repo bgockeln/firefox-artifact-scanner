@@ -1,4 +1,5 @@
 # Firefox Artifact Analyzer
+For German version of this README, see [README_DE.md](README_DE.md)
 
 This project started as a small digital forensics experiment. I initially created simple scripts to extract browsing history and form history from Firefox `.sqlite` files. From there, I attempted to build a full CLI forensic toolkit, but it turned out to be just too big for me, for now.
 
@@ -20,6 +21,6 @@ Based on your selection, the script queries the corresponding Firefox databases 
 
 ![Example output for Cookies](imgs/m2.PNG)
 
-**CSV Example Output**
+**CSV Example Output:**
 
 ![Example output for Cookies](imgs/cookies.PNG)
