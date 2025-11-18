@@ -1,4 +1,7 @@
 # Firefox Artifact Analyzer
+![Python](https://img.shields.io/badge/python-3.12-blue)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Status](https://img.shields.io/badge/status-finished-brightgreen)
 For German version of this README, see [README_DE.md](README_DE.md)
 
 This project started as a small digital forensics experiment. I initially created simple scripts to extract browsing history and form history from Firefox `.sqlite` files. From there, I attempted to build a full CLI forensic toolkit, but it turned out to be just too big for me, for now.

@@ -1,4 +1,7 @@
 # Firefox Artifact Analyzer
+![Python](https://img.shields.io/badge/python-3.12-blue)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Status](https://img.shields.io/badge/status-finished-brightgreen)
 
 Dieses Projekt begann als kleines Experiment im Bereich der digitalen Forensik. Zuerst habe ich einfache Skripte erstellt, um den Browserverlauf und die Formulardaten aus den Firefox `.sqlite` Dateien auszulesen. Danach habe ich versucht, ein vollständiges CLI-Forensik-Toolkit zu erstellen, aber das war einfach zu umfangreich für mich.
 
